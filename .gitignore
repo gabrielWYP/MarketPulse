@@ -1,0 +1,48 @@
+# Codex local metadata
+.agents/
+.codex/
+
+# Local Office source documents (publish sanitized Markdown only)
+docs/source/*
+!docs/source/README.md
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+dist/
+build/
+*.egg-info/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+
+# Infrastructure state
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+
+# Runtime data and artifacts
+data/
+artifacts/
+mlruns/
+logs/
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

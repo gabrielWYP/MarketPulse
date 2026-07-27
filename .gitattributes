@@ -1,0 +1,5 @@
+*.docx binary
+*.xlsx binary
+*.parquet binary
+*.onnx binary
+*.pkl binary
