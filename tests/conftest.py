@@ -26,5 +26,6 @@ def valid_candle(btc_perpetual: InstrumentId) -> Candle:
         close=Decimal("103"),
         volume=Decimal("12.5"),
         source="binance-usdm",
+        available_at=open_time + timedelta(hours=1, seconds=1),
         ingested_at=open_time + timedelta(hours=1, seconds=3),
     )

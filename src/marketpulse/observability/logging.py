@@ -9,6 +9,8 @@ import structlog
 def configure_logging(level: str = "INFO") -> None:
     """Configure standard-library and structlog output as JSON events."""
     logging.basicConfig(format="%(message)s", stream=sys.stdout, level=level, force=True)
+    logging.getLogger("httpcore").setLevel(logging.WARNING)
+    logging.getLogger("httpx").setLevel(logging.WARNING)
     structlog.configure(
         processors=[
             structlog.contextvars.merge_contextvars,

@@ -20,7 +20,7 @@ class CandleInterval(StrEnum):
 
 
 class Candle(BaseModel):
-    """One immutable, closed OHLCV candle available at `ingested_at`."""
+    """One immutable, closed OHLCV candle with source and ingestion availability."""
 
     model_config = ConfigDict(frozen=True)
 
@@ -34,9 +34,10 @@ class Candle(BaseModel):
     close: PositiveDecimal
     volume: NonNegativeDecimal
     source: str = Field(min_length=1, max_length=64)
+    available_at: datetime
     ingested_at: datetime
 
-    @field_validator("open_time", "close_time", "ingested_at")
+    @field_validator("open_time", "close_time", "available_at", "ingested_at")
     @classmethod
     def require_utc(cls, value: datetime) -> datetime:
         """Reject naive or non-UTC timestamps at the contract boundary."""
@@ -47,8 +48,8 @@ class Candle(BaseModel):
     @model_validator(mode="after")
     def validate_temporal_and_price_integrity(self) -> Self:
         """Validate closed-candle timing and OHLC coherence."""
-        if not self.open_time < self.close_time <= self.ingested_at:
-            raise ValueError("expected open_time < close_time <= ingested_at")
+        if not self.open_time < self.close_time <= self.available_at <= self.ingested_at:
+            raise ValueError("expected open_time < close_time <= available_at <= ingested_at")
         if self.high < max(self.open, self.close, self.low):
             raise ValueError("high must be greater than or equal to all OHLC prices")
         if self.low > min(self.open, self.close, self.high):
