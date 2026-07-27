@@ -1,0 +1,68 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "marketpulse"
+version = "0.1.0"
+description = "Probabilistic market forecasting and paper-trading evaluation platform"
+readme = "README.md"
+license = { text = "Apache-2.0" }
+requires-python = ">=3.12,<3.13"
+authors = [{ name = "Gabriel WYP" }]
+dependencies = [
+  "pydantic>=2.11,<3",
+  "pydantic-settings>=2.10,<3",
+  "structlog>=25.4,<26",
+]
+
+[project.scripts]
+marketpulse = "marketpulse.cli:main"
+
+[dependency-groups]
+dev = [
+  "mypy>=1.17,<2",
+  "pre-commit>=4.2,<5",
+  "pytest>=8.4,<9",
+  "pytest-cov>=6.2,<7",
+  "ruff>=0.12,<1",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/marketpulse"]
+
+[tool.pytest.ini_options]
+addopts = "--strict-config --strict-markers --cov=marketpulse --cov-report=term-missing"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["marketpulse"]
+
+[tool.coverage.report]
+fail_under = 90
+show_missing = true
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+warn_unreachable = true
+plugins = ["pydantic.mypy"]
+files = ["src", "tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["B", "D", "E", "F", "I", "RUF", "SIM", "UP"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["D"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.format]
+line-ending = "lf"
+quote-style = "double"

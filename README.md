@@ -14,6 +14,28 @@ quantile models. A separate research layer evaluates cost-aware
 `short / flat / long` policies using out-of-sample predictions. MarketPulse does
 not place real orders.
 
+## Quickstart
+
+Prerequisites: Python 3.12, [uv](https://docs.astral.sh/uv/), Docker, and the
+Docker Compose plugin.
+
+```bash
+uv sync --frozen --all-groups
+cp .env.example .env
+# Replace every <set-locally> value in .env before starting containers.
+make check
+uv run marketpulse
+docker compose up -d
+docker compose ps
+```
+
+`make check` runs Ruff, formatting validation, strict mypy, pytest with a 90%
+coverage gate, secret-pattern scanning, and Compose configuration validation.
+
+The current Compose stack provides PostgreSQL, MinIO, and MLflow. It is local
+development infrastructure; no cloud credentials or Binance API keys are
+needed.
+
 ## Documentation
 
 The original Office artifacts remain local and are ignored by Git. Their
