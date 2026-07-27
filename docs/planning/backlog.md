@@ -11,7 +11,7 @@
 - **Estimación (h):** 3
 - **Criterios de aceptación:** Estructura importable; README base; licencia y disclaimer.
 - **Evidencia / artefacto:** Repositorio inicial
-- **Status:** Not Started
+- **Status:** Done
 - **Owner:** Gabo
 - **Riesgo técnico:** Bajo
 
@@ -25,7 +25,7 @@
 - **Dependencias:** MP-001
 - **Criterios de aceptación:** Un comando instala y valida el proyecto.
 - **Evidencia / artefacto:** pyproject + pre-commit
-- **Status:** Not Started
+- **Status:** Done
 - **Owner:** Gabo
 - **Riesgo técnico:** Bajo
 
@@ -39,7 +39,7 @@
 - **Dependencias:** MP-001
 - **Criterios de aceptación:** Servicios levantan con health checks y volúmenes persistentes.
 - **Evidencia / artefacto:** compose.yaml
-- **Status:** Not Started
+- **Status:** Done
 - **Owner:** MLOps
 - **Riesgo técnico:** Medio
 
@@ -53,7 +53,7 @@
 - **Dependencias:** MP-002
 - **Criterios de aceptación:** Sin valores secretos hardcodeados; override por env vars.
 - **Evidencia / artefacto:** settings.py + .env.example
-- **Status:** Not Started
+- **Status:** Done
 - **Owner:** Platform
 - **Riesgo técnico:** Bajo
 
@@ -67,7 +67,7 @@
 - **Dependencias:** MP-001
 - **Criterios de aceptación:** Schemas versionados y tests de campos/timestamps.
 - **Evidencia / artefacto:** Pydantic/Pandera schemas
-- **Status:** Not Started
+- **Status:** Done
 - **Owner:** Data Engineering
 - **Riesgo técnico:** Medio
 
@@ -81,7 +81,7 @@
 - **Dependencias:** MP-002
 - **Criterios de aceptación:** PR falla ante violaciones; cache de dependencias.
 - **Evidencia / artefacto:** GitHub Actions
-- **Status:** Not Started
+- **Status:** Done
 - **Owner:** MLOps
 - **Riesgo técnico:** Bajo
 
@@ -95,7 +95,7 @@
 - **Dependencias:** MP-005
 - **Criterios de aceptación:** Fixtures reproducibles cubren huecos, duplicados y eventos tardíos.
 - **Evidencia / artefacto:** test fixtures
-- **Status:** Not Started
+- **Status:** Done
 - **Owner:** ML Engineering
 - **Riesgo técnico:** Bajo
 
@@ -109,7 +109,7 @@
 - **Dependencias:** MP-001
 - **Criterios de aceptación:** Decisiones, alternativas y trade-offs explícitos.
 - **Evidencia / artefacto:** docs/adr
-- **Status:** Not Started
+- **Status:** Done
 - **Owner:** Gabo
 - **Riesgo técnico:** Bajo
 
@@ -123,7 +123,7 @@
 - **Dependencias:** MP-006
 - **Criterios de aceptación:** Pipeline detecta secreto simulado y dependencia vulnerable de prueba.
 - **Evidencia / artefacto:** CI security checks
-- **Status:** Not Started
+- **Status:** In Progress
 - **Owner:** MLOps
 - **Riesgo técnico:** Bajo
 
@@ -137,7 +137,7 @@
 - **Dependencias:** MP-003,MP-006
 - **Criterios de aceptación:** Onboarding local en menos de 15 minutos.
 - **Evidencia / artefacto:** Justfile/Makefile
-- **Status:** Not Started
+- **Status:** Done
 - **Owner:** Platform
 - **Riesgo técnico:** Bajo
 
@@ -151,11 +151,11 @@
 - **Dependencias:** MP-005
 - **Criterios de aceptación:** Backfill idempotente; UTC; rate limits manejados.
 - **Evidencia / artefacto:** raw candles BTC/ETH
-- **Status:** Not Started
+- **Status:** Done
 - **Owner:** Data Engineering
 - **Riesgo técnico:** Medio
 
-## MP-012 — Implementar adapter de equities para QQQ.
+## MP-012 — Implementar adapter Binance TradFi perpetual para QQQUSDT.
 
 - **Corte:** C1
 - **Epic:** Market Ingestion
@@ -163,9 +163,9 @@
 - **Prioridad:** Must
 - **Estimación (h):** 8
 - **Dependencias:** MP-005
-- **Criterios de aceptación:** Calendario y días sin mercado tratados correctamente.
-- **Evidencia / artefacto:** raw candles QQQ
-- **Status:** Not Started
+- **Criterios de aceptación:** `TRADIFI_PERPETUAL` validado; sesiones/regímenes 24/7 identificables.
+- **Evidencia / artefacto:** raw candles QQQUSDT + exchange subtype
+- **Status:** Done
 - **Owner:** Data Engineering
 - **Riesgo técnico:** Alto
 
@@ -179,7 +179,7 @@
 - **Dependencias:** MP-011,MP-012
 - **Criterios de aceptación:** Reejecución no duplica; manifest de ingesta disponible.
 - **Evidencia / artefacto:** Parquet en MinIO/S3
-- **Status:** Not Started
+- **Status:** Done
 - **Owner:** Data Engineering
 - **Riesgo técnico:** Bajo
 
@@ -193,7 +193,7 @@
 - **Dependencias:** MP-013
 - **Criterios de aceptación:** Errores críticos bloquean pipeline; warnings quedan registrados.
 - **Evidencia / artefacto:** quality report
-- **Status:** Not Started
+- **Status:** Done
 - **Owner:** Data Engineering
 - **Riesgo técnico:** Bajo
 
@@ -207,7 +207,7 @@
 - **Dependencias:** MP-013,MP-014
 - **Criterios de aceptación:** Particiones reejecutables y observables.
 - **Evidencia / artefacto:** Dagster assets
-- **Status:** Not Started
+- **Status:** Done
 - **Owner:** Data Engineering
 - **Riesgo técnico:** Medio
 
@@ -221,7 +221,7 @@
 - **Dependencias:** MP-014
 - **Criterios de aceptación:** Target usa solo t+1...t+24 y se materializa tras el horizonte.
 - **Evidencia / artefacto:** target dataset
-- **Status:** Not Started
+- **Status:** Done
 - **Owner:** ML Engineering
 - **Riesgo técnico:** Alto
 
@@ -235,7 +235,7 @@
 - **Dependencias:** MP-014
 - **Criterios de aceptación:** Ventanas cerradas; naming/versionado; sin NaN inesperados.
 - **Evidencia / artefacto:** feature set market_v1
-- **Status:** Not Started
+- **Status:** Done
 - **Owner:** ML Engineering
 - **Riesgo técnico:** Medio
 
@@ -249,7 +249,7 @@
 - **Dependencias:** MP-016,MP-017
 - **Criterios de aceptación:** Test falla cuando una feature aparece después del forecast time.
 - **Evidencia / artefacto:** temporal integrity tests
-- **Status:** Not Started
+- **Status:** Done
 - **Owner:** ML Engineering
 - **Riesgo técnico:** Alto
 
@@ -263,7 +263,7 @@
 - **Dependencias:** MP-018
 - **Criterios de aceptación:** Dataset reproducible por config/hash.
 - **Evidencia / artefacto:** dataset manifest
-- **Status:** Not Started
+- **Status:** Done
 - **Owner:** ML Engineering
 - **Riesgo técnico:** Bajo
 
@@ -277,7 +277,7 @@
 - **Dependencias:** MP-019
 - **Criterios de aceptación:** Predicciones out-of-sample para cada fold.
 - **Evidencia / artefacto:** baseline forecasts
-- **Status:** Not Started
+- **Status:** Done
 - **Owner:** ML Engineering
 - **Riesgo técnico:** Bajo
 
@@ -291,7 +291,7 @@
 - **Dependencias:** MP-019
 - **Criterios de aceptación:** Folds configurables; no overlap indebido; resultados persistidos.
 - **Evidencia / artefacto:** backtest engine
-- **Status:** Not Started
+- **Status:** Done
 - **Owner:** ML Engineering
 - **Riesgo técnico:** Alto
 
@@ -305,7 +305,7 @@
 - **Dependencias:** MP-021
 - **Criterios de aceptación:** Tests numéricos y agregación por activo/fold.
 - **Evidencia / artefacto:** metrics module
-- **Status:** Not Started
+- **Status:** Done
 - **Owner:** ML Engineering
 - **Riesgo técnico:** Bajo
 
@@ -319,7 +319,7 @@
 - **Dependencias:** MP-020,MP-021,MP-022
 - **Criterios de aceptación:** Tabla y gráficos reproducibles desde artefactos.
 - **Evidencia / artefacto:** baseline report
-- **Status:** Not Started
+- **Status:** Done
 - **Owner:** Gabo
 - **Riesgo técnico:** Bajo
 
@@ -333,7 +333,7 @@
 - **Dependencias:** MP-015
 - **Criterios de aceptación:** Prometheus registra freshness por asset/source.
 - **Evidencia / artefacto:** metrics endpoint/job
-- **Status:** Not Started
+- **Status:** Done
 - **Owner:** MLOps
 - **Riesgo técnico:** Bajo
 

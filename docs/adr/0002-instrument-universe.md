@@ -23,6 +23,10 @@ MVP. QQQUSDT metrics must be segmented by regular, pre-market, after-market,
 overnight, weekend, and holiday regimes because its reference market is not
 economically homogeneous across 24/7 trading.
 
+Binance currently reports BTCUSDT and ETHUSDT as `PERPETUAL`, while QQQUSDT is
+reported as `TRADIFI_PERPETUAL`. Both subtypes map to the canonical
+`USD_M_PERPETUAL` type, and raw metadata retains the exchange subtype.
+
 ## Consequences
 
 - Backtests use mark price, funding, spread, and rules for the actual contract.

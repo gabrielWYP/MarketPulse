@@ -32,6 +32,25 @@ docker compose ps
 `make check` runs Ruff, formatting validation, strict mypy, pytest with a 90%
 coverage gate, secret-pattern scanning, and Compose configuration validation.
 
+Verify the live public Binance universe without an API key:
+
+```bash
+uv run marketpulse verify-universe
+```
+
+Run C1 over an explicit historical UTC range:
+
+```bash
+uv run marketpulse c1-run \
+  --start 2026-01-01T00:00:00Z \
+  --end 2026-04-01T00:00:00Z \
+  --output-dir artifacts/c1
+```
+
+The command writes immutable raw partitions plus a baseline report and
+Prometheus freshness/missing-candle metrics. See the
+[C1 data-to-baseline specification](docs/specifications/c1-data-baseline.md).
+
 The current Compose stack provides PostgreSQL, MinIO, and MLflow. It is local
 development infrastructure; no cloud credentials or Binance API keys are
 needed.
@@ -56,6 +75,11 @@ statements in the original design snapshots.
 Secrets must never be committed. Local values belong in ignored `.env` files;
 deployment credentials belong in GitHub Actions Secrets or a cloud secret
 manager. Public market-data ingestion will not require a Binance API key.
+
+The [K3S deployment contract](docs/deployment/k3s-contract.md) follows the
+existing application-caller to `K3S_Infra` reusable-workflow model. An internal
+batch deployment becomes viable after C1 packaging; the first public deployment
+gate is C3, when forecast APIs and operational probes exist.
 
 ## License
 
